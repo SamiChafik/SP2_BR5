@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/header.css">
+  <link rel="stylesheet" href="./styles/add.css">
+  <title>Add a movie</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="./assets/images/MyMovies_logo_white.PNG" alt="MyMovies logo">
+      <div id="nav2">
+        <a href="./home.html">Home</a>
+        <a href="./list.html">Movies</a>
+        <a href="./add.html" id="add">Add</a>
+      </div>
+    </nav>
+
+    <section id="section1">
+      <div id="box">
+        <div id="box2">
+          <div class="inputBox">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="Title">
+          </div>
+          <div class="inputBox">
+            <label for="publisher">Publisher</label>
+            <input type="text" name="publisher" id="publisher" placeholder="Publisher">
+          </div>
+          <div class="inputBox">
+            <label for="release">Release Year</label>
+            <input type="text" name="release" id="release" placeholder="Release Year">
+          </div>
+          <div class="inputBox">
+            <label for="genre">Genre</label>
+            <input type="text" name="genre" id="genre" placeholder="Genre">
+          </div>
+          <div class="inputBox">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="" disabled selected>Select a category</option>
+              <option value="seen">Seen</option>
+              <option value="watch list">Watch list</option>
+            </select>
+          </div>
+          <div class="inputBox">
+            <label for="status">Discription</label>
+            <textarea name="discription" id="description"></textarea>
+          </div>
+        </div>
+        <div id="box3">
+          <div>
+            <label for="imgUpload" id="customBtn">Upload</label>         
+            <input type="file" id="imgUpload">
+          </div>
+          <button id="addMovie">Add</button>
+          <button id="deleteAll">Delete*</button>
+        </div>
+      </div>
+    </section>
+    <section id="list">
+      <div>
+        <table id="movieList">
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Options</th>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </header>
+  <script src="./scripts/add.js"></script>
+</body>
+</html>
