@@ -31,10 +31,17 @@ button {
     height: 50px;
     width: 100px;
     font-size: 25px;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+#addMovie:hover {
+    background-color: #01a61c;
+    color: white;
+}
+
+#deleteAll:hover {
+    background-color: #b30027;
+    color: white;
 }
 
 #box2 {
@@ -93,6 +100,12 @@ input[type="file"] {
     width: 100px;
     font-size: 25px;
     background-color: white;
+    cursor: pointer;
+}
+
+#customBtn:hover {
+    background-color: #f5a459;
+    color: white;
 }
 
 #status {
@@ -125,17 +138,24 @@ th {
     text-align: cenetr; /* Align text to the left */
 }
 
-th img {
-    width: 50px;
+td {
+    background-color: #727272; /* Green background for headers */
+    color: white; /* White text color */
+    padding: 12px; /* Padding for header cells */
+    text-align: center; /* Align text to the left */
+}
+
+td img {
+    width: 80px;
     height: auto;
     border-radius: 4px;
 }
 
-th #option {
+td #option {
     text-align: left;
 }
 
-.option-button {
+.optionButton {
     display: inline ; /* Make buttons inline-block */
     margin-right: 10px; /* Add space between buttons */
     padding: 5px 10px; /* Padding for buttons */
@@ -145,6 +165,12 @@ th #option {
     cursor: pointer; /* Pointer cursor on hover */
 }
 
-.option-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+#editBtn:hover {
+    background-color: #01a61c;
+    color: white; /* Darker blue on hover */
+}
+
+#deleteBtn:hover {
+    background-color: #b30027;
+    color: white; /* Darker blue on hover */
 }

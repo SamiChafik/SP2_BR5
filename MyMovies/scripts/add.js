@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const movies = JSON.parse(localStorage.getItem('movies')) || [];
 
     addMovieBtn.addEventListener('click', () => {
-        const title = document.getElementById('title').value;
-        const publisher = document.getElementById('publisher').value;
-        const release = document.getElementById('release').value;
-        const genre = document.getElementById('genre').value;
-        const status = document.getElementById('status').value;
-        const description = document.getElementById('description').value;
+        const title = document.getElementById('title');
+        const publisher = document.getElementById('publisher');
+        const release = document.getElementById('release');
+        const genre = document.getElementById('genre');
+        const status = document.getElementById('status');
+        const description = document.getElementById('description');
         const imgUpload = document.getElementById('imgUpload');
         let imagePath = '';
 
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const movie = {
                 id,
-                title,
-                publisher,
-                release,
-                genre,
-                status,
+                title: title.value,
+                publisher: publisher.value,
+                release: release.value,
+                genre: genre.value,
+                status: genre.value,
                 description: description || 'Not specified',
                 image: imagePath || 'No image uploaded',
             }
@@ -37,6 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('movie added');
             console.log(movie);
 
+            title.value = '';
+            publisher.value = '';
+            release.value = '';
+            genre.value = '';
+            status.value = '';
+            description.value = '';
+
+            showMovies();
         }
 
         if (imgUpload.files.length > 0) {
@@ -53,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             addMovie();
         }
 
+                  
+
     });
 
     const deleteAll = document.getElementById('deleteAll');
@@ -60,13 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
     deleteAll.addEventListener('click', () => {
         localStorage.removeItem('movies');
         alert('All movies deleted');
+        showMovies();
     });
 
+onload(showMovies());
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+function showMovies() {
 
-    const movieList = document.getElementById('movieList');
+    const movieList = document.getElementById('movieListBody');
+
+    movieList.innerHTML = '';
 
     const movies = JSON.parse(localStorage.getItem('movies')) || [];
 
@@ -81,21 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><img src="${movie.image}"></td>
             <td>${movie.title}</td>
             <td id="option">
-                <button class="option-button">Edit</button>
-                <button class="option-button">Delete</button>
+                <button class="optionButton" id="editBtn">Edit</button>
+                <button class="optionButton" id="deleteBtn">Delete</button>
             </td>
         `;
 
         movieList.appendChild(movieItm);    
 
     });
-   
-
-});
-
-
-// const btn = document.getElementById("addMovie");
-
-// btn.addEventListener('click', () => {
-//     alert('btn working');
-// });
+};

@@ -52,7 +52,7 @@
         </div>
         <div id="box3">
           <div>
-            <label for="imgUpload" id="customBtn">Upload</label>         
+            <label for="imgUpload" id="customBtn">Image</label>         
             <input type="file" id="imgUpload">
           </div>
           <button id="addMovie">Add</button>
@@ -62,12 +62,17 @@
     </section>
     <section id="list">
       <div>
-        <table id="movieList">
-          <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Options</th>
-          </tr>
+        <table>
+          <thead id="movieListHead">
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th id="option">Options</th>
+            </tr>
+          </thead>
+          <tbody id="movieListBody">
+
+          </tbody>
         </table>
       </div>
     </section>
