@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addMovieBtn = document.getElementById('addMovie');
-    let id = 0;
+    let isEditing = false;
+    let editMovieId = null;
+    let currentImagePath = '';
 
-    const movies = JSON.parse(localStorage.getItem('movies')) || [];
+    let movies = JSON.parse(localStorage.getItem('movies')) || [];
+    showMovies();
 
     addMovieBtn.addEventListener('click', () => {
         const title = document.getElementById('title');
@@ -12,30 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const status = document.getElementById('status');
         const description = document.getElementById('description');
         const imgUpload = document.getElementById('imgUpload');
-        let imagePath = '';
+        let imagePath = currentImagePath;
 
-        function addMovie () {
-            if (!title || !publisher || !release || !genre || !status) {
+        function addOrUpdateMovie() {
+            if (!title.value || !publisher.value || !release.value || !genre.value || !status.value) {
                 alert('Please fill out all required fields!');
-                return
-            } else {id++;}
+                return;
+            }
 
             const movie = {
-                id,
+                id: isEditing ? editMovieId : Date.now(),
                 title: title.value,
                 publisher: publisher.value,
                 release: release.value,
                 genre: genre.value,
-                status: genre.value,
-                description: description || 'Not specified',
+                status: status.value,
+                description: description.value || 'Not specified',
                 image: imagePath || 'No image uploaded',
+            };        
+
+            if (isEditing) {
+                const index = movies.findIndex(m => m.id === editMovieId);
+                if (index !== -1) {
+                    movies[index] = movie;
+                }
+            } else {
+                movies.push(movie);
             }
 
-            movies.push(movie);
             localStorage.setItem('movies', JSON.stringify(movies));
-
-            alert('movie added');
-            console.log(movie);
+            alert(isEditing ? 'Movie updated' : 'Movie added');
 
             title.value = '';
             publisher.value = '';
@@ -43,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             genre.value = '';
             status.value = '';
             description.value = '';
+            imgUpload.value = '';
+            isEditing = false;
+            editMovieId = null;
+            currentImagePath = '';
 
             showMovies();
         }
@@ -53,54 +66,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
             reader.onload = function (e) {
                 imagePath = e.target.result;
-                addMovie();
+                addOrUpdateMovie();
             };
 
             reader.readAsDataURL(file);
         } else {
-            addMovie();
+            addOrUpdateMovie();
         }
-
-                  
-
     });
 
     const deleteAll = document.getElementById('deleteAll');
-
     deleteAll.addEventListener('click', () => {
         localStorage.removeItem('movies');
+        movies = [];
         alert('All movies deleted');
         showMovies();
     });
 
-onload(showMovies());
-});
+    function editMovieById(movieId) {
+        const movie = movies.find(m => m.id === movieId);
 
-function showMovies() {
+        if (movie) {
+            document.getElementById('title').value = movie.title;
+            document.getElementById('publisher').value = movie.publisher;
+            document.getElementById('release').value = movie.release;
+            document.getElementById('genre').value = movie.genre;
+            document.getElementById('status').value = movie.status;
+            document.getElementById('description').value = movie.description;
 
-    const movieList = document.getElementById('movieListBody');
+            currentImagePath = movie.image;
+            isEditing = true;
+            editMovieId = movieId;
 
-    movieList.innerHTML = '';
-
-    const movies = JSON.parse(localStorage.getItem('movies')) || [];
-
-    if (movies.length === 0) {
-        return;
+            document.getElementById('movieForm').scrollIntoView();
+        }
     }
 
-    movies.forEach(movie => {
-        const movieItm = document.createElement('tr');
+    function showMovies() {
+        const movieList = document.getElementById('movieListBody');
+        movieList.innerHTML = '';
 
-        movieItm.innerHTML = `
-            <td><img src="${movie.image}"></td>
-            <td>${movie.title}</td>
-            <td id="option">
-                <button class="optionButton" id="editBtn">Edit</button>
-                <button class="optionButton" id="deleteBtn">Delete</button>
-            </td>
-        `;
+        const movies = JSON.parse(localStorage.getItem('movies')) || [];
 
-        movieList.appendChild(movieItm);    
+        if (movies.length === 0) {
+            return;
+        }
 
-    });
-};
+        movies.forEach(movie => {
+            const movieItm = document.createElement('tr');
+
+            movieItm.innerHTML = `
+                <td><img src="${movie.image}" alt="${movie.title}" width="100"></td>
+                <td>${movie.title}</td>
+                <td id="option">
+                    <button class="optionButton editBtn" data-id="${movie.id}">Edit</button>
+                    <button class="optionButton deleteBtn" data-id="${movie.id}">Delete</button>
+                </td>
+            `;
+
+            movieList.appendChild(movieItm);
+        });
+
+        const editButtons = document.querySelectorAll('.editBtn');
+        editButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const movieId = parseInt(button.getAttribute('data-id'));
+                editMovieById(movieId);
+            });
+        });
+
+        const deleteButtons = document.querySelectorAll('.deleteBtn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const movieId = parseInt(button.getAttribute('data-id'));
+                deleteMovieById(movieId);
+            });
+        });
+    }
+
+    function deleteMovieById(movieId) {
+        let movies = JSON.parse(localStorage.getItem('movies')) || [];
+        movies = movies.filter(movie => movie.id !== movieId);
+        localStorage.setItem('movies', JSON.stringify(movies));
+        showMovies();
+        alert('Movie deleted');
+    }
+
+});

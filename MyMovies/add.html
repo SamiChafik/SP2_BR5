@@ -17,66 +17,67 @@
         <a href="./add.html" id="add">Add</a>
       </div>
     </nav>
-
-    <section id="section1">
-      <div id="box">
-        <div id="box2">
-          <div class="inputBox">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Title">
-          </div>
-          <div class="inputBox">
-            <label for="publisher">Publisher</label>
-            <input type="text" name="publisher" id="publisher" placeholder="Publisher">
-          </div>
-          <div class="inputBox">
-            <label for="release">Release Year</label>
-            <input type="text" name="release" id="release" placeholder="Release Year">
-          </div>
-          <div class="inputBox">
-            <label for="genre">Genre</label>
-            <input type="text" name="genre" id="genre" placeholder="Genre">
-          </div>
-          <div class="inputBox">
-            <label for="status">Status</label>
-            <select id="status" name="status">
-              <option value="" disabled selected>Select a category</option>
-              <option value="seen">Seen</option>
-              <option value="watch list">Watch list</option>
-            </select>
-          </div>
-          <div class="inputBox">
-            <label for="status">Discription</label>
-            <textarea name="discription" id="description"></textarea>
-          </div>
-        </div>
-        <div id="box3">
-          <div>
-            <label for="imgUpload" id="customBtn">Image</label>         
-            <input type="file" id="imgUpload">
-          </div>
-          <button id="addMovie">Add</button>
-          <button id="deleteAll">Delete*</button>
-        </div>
-      </div>
-    </section>
-    <section id="list">
-      <div>
-        <table>
-          <thead id="movieListHead">
-            <tr>
-              <th>Image</th>
-              <th>Title</th>
-              <th id="option">Options</th>
-            </tr>
-          </thead>
-          <tbody id="movieListBody">
-
-          </tbody>
-        </table>
-      </div>
-    </section>
   </header>
+
+  <section id="section1">
+    <div id="box">
+      <div id="box2">
+        <div class="inputBox">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="Title">
+        </div>
+        <div class="inputBox">
+          <label for="publisher">Publisher</label>
+          <input type="text" name="publisher" id="publisher" placeholder="Publisher">
+        </div>
+        <div class="inputBox">
+          <label for="release">Release Year</label>
+          <input type="text" name="release" id="release" placeholder="Release Year">
+        </div>
+        <div class="inputBox">
+          <label for="genre">Genre</label>
+          <input type="text" name="genre" id="genre" placeholder="Genre">
+        </div>
+        <div class="inputBox">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="" disabled selected>Select a category</option>
+            <option value="seen">Seen</option>
+            <option value="watch list">Watch list</option>
+          </select>
+        </div>
+        <div class="inputBox">
+          <label for="status">Discription</label>
+          <textarea name="discription" id="description"></textarea>
+        </div>
+      </div>
+      <div id="box3">
+        <div>
+          <label for="imgUpload" id="customBtn">Image</label>         
+          <input type="file" id="imgUpload">
+        </div>
+        <button id="addMovie">Add</button>
+        <button id="deleteAll">Delete*</button>
+      </div>     
+    </div>
+    <p id="count">count</p>
+  </section>
+  <section id="list">
+    <div>
+      <table>
+        <thead id="movieListHead">
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th id="option">Options</th>
+          </tr>
+        </thead>
+        <tbody id="movieListBody">
+
+        </tbody>
+      </table>
+    </div>
+  </section>
   <script src="./scripts/add.js"></script>
 </body>
 </html>
