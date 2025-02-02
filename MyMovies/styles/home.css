@@ -69,3 +69,11 @@
     max-width: 150px;
     text-align: center;
 }
+
+@media screen and (max-width: 625px) {
+
+    #section1 {
+        height: auto;
+        padding-bottom: 30px;
+    }
+}

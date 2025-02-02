@@ -54,3 +54,16 @@ img {
     height: 50px;
     width: auto;
 }
+@media screen and (max-width: 625px) {
+
+    nav {
+        height: 150px;
+    }
+
+    #nav2 {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
