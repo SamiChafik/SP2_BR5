@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 release: release.value,
                 genre: genre.value,
                 status: status.value,
-                description: description.value || 'Not specified',
+                description: description.value || 'No desription',
                 image: imagePath || 'No image uploaded',
             };        
 
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isEditing = true;
             editMovieId = movieId;
 
-            document.getElementById('movieForm').scrollIntoView();
+            document.getElementById('section1').scrollIntoView();
         }
     }
 

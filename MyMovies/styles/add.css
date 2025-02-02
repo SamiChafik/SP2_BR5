@@ -1,7 +1,12 @@
 body {
-    background-color: grey;
     font-size: 30px;
- }
+    background-image: url('../assets/backgrounds/cinematography-symbols-black-background-2.JPG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+}
 
 #section1 {
     display: flex;
@@ -13,15 +18,19 @@ body {
 }
 
 #box {
-    background-color: #b6b6b6;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2%;
+    margin-top: 1%;
     border-radius: 8px;
     width: 500px;
     height: 90%;
     gap: 90px;
+    background: rgba(75, 75, 75, 0.2);
+    backdrop-filter: blur(15px);
+
 }
 
 button {
@@ -34,6 +43,7 @@ button {
     width: 100px;
     font-size: 25px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 #addMovie:hover {
@@ -103,6 +113,8 @@ input[type="file"] {
     font-size: 25px;
     background-color: white;
     cursor: pointer;
+    transition: 0.3s;
+    color: black;
 }
 
 #customBtn:hover {
@@ -119,32 +131,30 @@ input[type="file"] {
     font-size: 20px;
 }
 
-/* General styles for the movie list section */
 #list div {
     display: flex;
     width: 100%;
 
 }
 
-/* Table styles */
 table {
-    width: 100%; /* Full width */
-    border-collapse: collapse; /* Remove space between borders */
-    margin-top: 20px; /* Space above the table */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 th {
-    background-color: #727272; /* Green background for headers */
-    color: white; /* White text color */
-    padding: 12px; /* Padding for header cells */
-    text-align: cenetr; /* Align text to the left */
+    background-color: #727272;
+    color: white;
+    padding: 12px;
+    text-align: cenetr;
 }
 
 td {
-    background-color: #727272; /* Green background for headers */
-    color: white; /* White text color */
-    padding: 12px; /* Padding for header cells */
-    text-align: center; /* Align text to the left */
+    background-color: #727272;
+    color: white;
+    padding: 12px;
+    text-align: center;
 }
 
 td img {
@@ -158,21 +168,22 @@ td #option {
 }
 
 .optionButton {
-    display: inline ; /* Make buttons inline-block */
-    margin-right: 10px; /* Add space between buttons */
-    padding: 5px 10px; /* Padding for buttons */
-    border: none; /* Remove border */
-    background-color: #000000; /* Blue background */
-    color: white; /* White text */
-    cursor: pointer; /* Pointer cursor on hover */
+    display: inline ;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#editBtn:hover {
+.editBtn:hover {
     background-color: #01a61c;
-    color: white; /* Darker blue on hover */
+    color: white;
 }
 
-#deleteBtn:hover {
+.deleteBtn:hover {
     background-color: #b30027;
-    color: white; /* Darker blue on hover */
+    color: white;
 }
